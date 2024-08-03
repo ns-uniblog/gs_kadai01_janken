@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <script src="js/jquery-2.1.3.min.js"></script>
+    <link rel="stylesheet" href="css/sample.css">
+    <title>じゃんけん</title>
+</head>
+
+<body>
+
+    <header>
+        <h1>じゃんけん</h1>
+    </header>
+
+    <main>
+        <div id="your_hands_title">あなたの出す手は？</div>
+        <ul id="your_hands">
+            <li id="gu_btn">グー</li>
+            <li id="cho_btn">チョキ</li>
+            <li id="par_btn">パー</li>
+        </ul>
+        <div>コンピュータの出した手は？　<span id="pc_hands"></span></div>
+        <div>結果は？　<span id="judgement"></span></div>
+        <div id="img">
+            <img id="img_blank" src="./img_janken/blank.png" width="600px" alt="">
+        </div>
+        <button id="reset">もう一度じゃんけんする</button>
+
+        <div id="records_title">対戦履歴</div>
+        <div id="records"></div>
+        <button id="records_reset">対戦履歴をクリアする</button>
+    </main>
+
+    <footer></footer>
+    <script>
+
+        // グーの場合
+        $("#gu_btn").on("click", function(){
+            const r = Math.ceil(Math.random()*3);
+            
+            let pc = "";
+            let judge = "";
+            let records = "";
+            let img_janken = "";
+            if(r==1){
+                pc="グー";
+                judge="あいこ";
+                records ="あいこ (グー vs グー)<br>";
+                img_janken='<img src = "img_janken/gu-gu.png" width="600px">';
+            }
+            if(r==2){
+                pc="チョキ";
+                judge="あなたの勝ち";
+                records ="あなたの勝ち (グー vs チョキ)<br>";
+                img_janken='<img src = "img_janken/gu-cho.png" width="600px">'; 
+            }
+            if(r==3){
+                pc="パー";
+                judge="あなたの負け";
+                records ="あなたの負け (グー vs パー)<br>";
+                img_janken='<img src = "img_janken/gu-pa.png" width="600px">';
+            }
+            $("#your_hands_title").html("あなたの出した手は？");            
+            $("#pc_hands").html(pc);
+            $("#judgement").html(judge);
+            $("#img").html(img_janken);         
+            $("#your_hands").css("pointer-events", "none");
+            $("#gu_btn").css("color","#0000ff");
+            $("#cho_btn").css("color","#000000");
+            $("#par_btn").css("color","#000000");
+            $("#records").prepend(records);
+        });
+
+                // チョキの場合
+                $("#cho_btn").on("click", function(){
+            const r = Math.ceil(Math.random()*3);
+            
+            let pc = "";
+            let judge = "";
+            let records = "";
+            let img_janken = "";
+            if(r==1){
+                pc="グー";
+                judge="あなたの負け";
+                records ="あなたの負け (チョキ vs グー)<br>";
+                img_janken='<img src = "img_janken/cho-gu.png" width="600px">';
+            }
+            if(r==2){
+                pc="チョキ";
+                judge="あいこ";
+                records ="あいこ (チョキ vs チョキ)<br>";
+                img_janken='<img src = "img_janken/cho-cho.png" width="600px">';
+            }
+            if(r==3){
+                pc="パー";
+                judge="あなたの勝ち";
+                records ="あなたの勝ち (チョキ vs パー)<br>";
+                img_janken='<img src = "img_janken/cho-pa.png" width="600px">';
+            }
+
+            $("#your_hands_title").html("あなたの出した手は？");                   
+            $("#pc_hands").html(pc);
+            $("#judgement").html(judge);
+            $("#img").html(img_janken);
+            $("#your_hands").css("pointer-events", "none");
+            $("#gu_btn").css("color","#000000");
+            $("#cho_btn").css("color","#0000ff");
+            $("#par_btn").css("color","#000000");
+            $("#records").prepend(records);
+        });
+
+                // パーの場合
+                $("#par_btn").on("click", function(){
+            const r = Math.ceil(Math.random()*3);
+            
+            let pc = "";
+            let judge = "";
+            let records = "";
+            let img_janken = "";
+            if(r==1){
+                pc="グー";
+                judge="あなたの勝ち";
+                records ="あなたの勝ち (パー vs グー)<br>";
+                img_janken='<img src = "img_janken/pa-gu.png" width="600px">';
+            }
+            if(r==2){
+                pc="チョキ";
+                judge="あなたの負け";
+                records ="あなたの負け (パー vs チョキ)<br>";
+                img_janken='<img src = "img_janken/pa-cho.png" width="600px">';
+            }
+            if(r==3){
+                pc="パー";
+                judge="あいこ";
+                records ="あいこ (パー vs パー)<br>";
+                img_janken='<img src = "img_janken/pa-pa.png" width="600px">';
+            }
+
+            $("#your_hands_title").html("あなたの出した手は？");                   
+            $("#pc_hands").html(pc);
+            $("#judgement").html(judge);
+            $("#img").html(img_janken);
+            $("#your_hands").css("pointer-events", "none");
+            $("#gu_btn").css("color","#000000");
+            $("#cho_btn").css("color","#000000");
+            $("#par_btn").css("color","#0000ff");
+            $("#records").prepend(records);
+        });
+
+        // リセット: https://developer.mozilla.org/ja/docs/Web/CSS/pointer-events
+        $("#reset").on("click", function(){
+            $("#your_hands_title").html("あなたの出す手は？");
+            $("#pc_hands").html("");
+            $("#judgement").html("");
+            $("#img").html('<img id="img_blank" src="./img_janken/blank.png" width="600px" alt="">');
+            $("#your_hands").css("pointer-events", "auto");
+            $("#gu_btn").css("color","#000000");
+            $("#cho_btn").css("color","#000000");
+            $("#par_btn").css("color","#000000");
+        });
+
+        // 対戦履歴
+        $("#records_reset").on("click", function(){
+            $("#records").empty();
+        });
+
+   
+    </script>
+</body>
+
+</html>
