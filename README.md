@@ -9,7 +9,7 @@
 <p>　 </p>
 
 **<p> デモ（ID/PW） </p>**
-<p> https://ns-uniblog.github.io/kadai01_janken/
+<p> https://ns-uniblog.github.io/gs_kadai01_janken/</p>
 <p>　 </p>
 
 **<p> 工夫した点・こだわった点 </p>**
